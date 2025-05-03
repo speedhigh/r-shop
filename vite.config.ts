@@ -1,21 +1,41 @@
 import { fileURLToPath, URL } from 'node:url'
 
-import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
-import vueDevTools from 'vite-plugin-vue-devtools'
 import UnoCSS from 'unocss/vite'
-
+import AutoImport from 'unplugin-auto-import/vite'
+import Components from 'unplugin-vue-components/vite'
+import { VueRouterAutoImports } from 'unplugin-vue-router'
+import VueRouter from 'unplugin-vue-router/vite'
+import { defineConfig } from 'vite'
+import viteCompression from 'vite-plugin-compression'
+import vueDevTools from 'vite-plugin-vue-devtools'
+import MetaLayouts from 'vite-plugin-vue-meta-layouts'
 
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [
     vue(),
     vueDevTools(),
+    viteCompression(),
     UnoCSS(),
+    VueRouter({
+      extensions: ['.vue'],
+    }),
+    MetaLayouts({
+      target: './src/layouts',
+      defaultLayout: 'default',
+      skipTopLevelRouteLayout: false,
+    }),
+    AutoImport({
+      imports: ['vue', '@vueuse/core', VueRouterAutoImports],
+    }),
+    Components({
+      dirs: ['src/components'],
+    }),
   ],
   resolve: {
     alias: {
-      '@': fileURLToPath(new URL('./src', import.meta.url))
+      '@': fileURLToPath(new URL('./src', import.meta.url)),
     },
   },
 })
