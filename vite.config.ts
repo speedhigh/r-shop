@@ -1,7 +1,7 @@
 import { fileURLToPath, URL } from 'node:url'
 
 import vue from '@vitejs/plugin-vue'
-import UnoCSS from 'unocss/vite'
+import tailwindcss from '@tailwindcss/vite'
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import { VueRouterAutoImports } from 'unplugin-vue-router'
@@ -17,7 +17,7 @@ export default defineConfig({
     vue(),
     vueDevTools(),
     viteCompression(),
-    UnoCSS(),
+    tailwindcss(),
     VueRouter({
       extensions: ['.vue'],
     }),
