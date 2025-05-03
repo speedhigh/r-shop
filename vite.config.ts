@@ -1,7 +1,7 @@
 import { fileURLToPath, URL } from 'node:url'
 
-import vue from '@vitejs/plugin-vue'
 import tailwindcss from '@tailwindcss/vite'
+import vue from '@vitejs/plugin-vue'
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import { VueRouterAutoImports } from 'unplugin-vue-router'
