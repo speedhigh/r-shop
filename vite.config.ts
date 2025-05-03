@@ -27,7 +27,12 @@ export default defineConfig({
       skipTopLevelRouteLayout: false,
     }),
     AutoImport({
-      imports: ['vue', '@vueuse/core', VueRouterAutoImports],
+      imports: [
+        'vue',
+        '@vueuse/core',
+        { 'vue-i18n': ['useI18n'] },
+      ],
+      dts: 'src/auto-imports.d.ts',
     }),
     Components({
       dirs: ['src/components'],

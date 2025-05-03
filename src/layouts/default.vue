@@ -1,13 +1,16 @@
 <template>
-  <div>
-    <header>Hea32der</header>
-    <main>
+  <div class="min-h-screen flex flex-col">
+    <header class="fixed top-0 left-0 right-0 z-50 bg-white shadow-sm">
+      <LayoutHeader />
+    </header>
+    <main class="flex-1 pt-16">
       <router-view />
     </main>
-    <footer aria-labelledby="footer-heading" class="bottom-0 fixed inset-x-0 bg-gray-900 z-50 text-center">
-      <div class="text-sm text-white py-10">
-        Copyright &copy; 2025 Your Company, Inc.
-      </div>
+    <footer
+      aria-labelledby="footer-heading"
+      class="border-t border-gray-100 bg-gray-50 text-center"
+    >
+      <LayoutCopyright />
     </footer>
   </div>
 </template>
