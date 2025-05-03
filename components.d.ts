@@ -8,10 +8,21 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
+    CategorySection: typeof import('./src/components/Sections/CategorySection.vue')['default']
+    FavoritesSection: typeof import('./src/components/Sections/FavoritesSection.vue')['default']
+    FeaturedSection: typeof import('./src/components/Sections/FeaturedSection.vue')['default']
+    IncentivesSection: typeof import('./src/components/Sections/IncentivesSection.vue')['default']
+    LayoutCart: typeof import('./src/components/Layout/LayoutCart.vue')['default']
     LayoutCopyright: typeof import('./src/components/Layout/LayoutCopyright.vue')['default']
     LayoutHeader: typeof import('./src/components/Layout/LayoutHeader.vue')['default']
+    LayoutHeader2: typeof import('./src/components/Layout/LayoutHeader2.vue')['default']
     LayoutNav: typeof import('./src/components/Layout/LayoutNav.vue')['default']
+    LayoutSearch: typeof import('./src/components/Layout/LayoutSearch.vue')['default']
+    PromoSection: typeof import('./src/components/Sections/PromoSection.vue')['default']
+    PromoSection2: typeof import('./src/components/Sections/PromoSection2.vue')['default']
+    PromoSections: typeof import('./src/components/Sections/PromoSections.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    TrendingSection: typeof import('./src/components/Sections/TrendingSection.vue')['default']
   }
 }

@@ -1,10 +1,10 @@
 <template>
-  <h1>Home</h1>
-  <RouterLink to="/about">
-    about
-  </RouterLink>
+  <PromoSection />
+  <CategorySection />
+  <FeaturedSection />
+  <FavoritesSection />
+  <PromoSection2 />
 </template>
 
 <script setup lang="ts">
-
 </script>
