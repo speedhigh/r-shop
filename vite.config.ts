@@ -13,7 +13,7 @@ import MetaLayouts from 'vite-plugin-vue-meta-layouts'
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: './r-shop/',
+  base: '/r-shop/',
   plugins: [
     vue(),
     vueDevTools(),
