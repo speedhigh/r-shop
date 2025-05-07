@@ -81,9 +81,9 @@
                     <div class="grid grid-cols-2 gap-x-4">
                       <div
                         v-for="item in category.featured"
-                        :key="item.name"
+                        :key="item.name" d
                         class="group relative text-sm"
-                        @click="toProductList"
+                        @click="() => toProductList()"
                       >
                         <img
                           :src="item.imageSrc"
@@ -127,7 +127,7 @@
                         >
                           <div
                             class="-m-2 block p-2 text-gray-500 cursor-pointer"
-                            @click="toProductList"
+                            @click="() => toProductList()"
                           >
                             {{ item.name }}
                           </div>
@@ -255,7 +255,7 @@
                                 v-for="item in category.featured"
                                 :key="item.name"
                                 class="group relative text-base sm:text-sm cursor-pointer"
-                                @click="toProductList(close)"
+                                @click="() => { toProductList(); close(); }"
                               >
                                 <img
                                   :src="item.imageSrc"
@@ -300,7 +300,7 @@
                                   >
                                     <div
                                       class="hover:text-gray-800 cursor-pointer"
-                                      @click="toProductList(close)"
+                                      @click="() => { toProductList(); close(); }"
                                     >
                                       {{ item.name }}
                                     </div>
