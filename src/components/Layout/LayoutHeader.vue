@@ -83,22 +83,20 @@
                         v-for="item in category.featured"
                         :key="item.name"
                         class="group relative text-sm"
+                        @click="toProductList"
                       >
                         <img
                           :src="item.imageSrc"
                           :alt="item.imageAlt"
                           class="aspect-square w-full rounded-lg bg-gray-100 object-cover group-hover:opacity-75"
                         />
-                        <a
-                          :href="item.href"
-                          class="mt-6 block font-medium text-gray-900"
-                        >
+                        <div class="mt-6 block font-medium text-gray-900">
                           <span
                             class="absolute inset-0 z-10"
                             aria-hidden="true"
                           ></span>
                           {{ item.name }}
-                        </a>
+                        </div>
                         <p
                           aria-hidden="true"
                           class="mt-1"
@@ -127,10 +125,12 @@
                           :key="item.name"
                           class="flow-root"
                         >
-                          <a
-                            :href="item.href"
-                            class="-m-2 block p-2 text-gray-500"
-                          >{{ item.name }}</a>
+                          <div
+                            class="-m-2 block p-2 text-gray-500 cursor-pointer"
+                            @click="toProductList"
+                          >
+                            {{ item.name }}
+                          </div>
                         </li>
                       </ul>
                     </div>
@@ -211,12 +211,6 @@
             <div class="ml-4 flex lg:ml-0">
               <router-link to="/">
                 <h2 class="font-bold">R-Shop 👌🏻</h2>
-                <!-- <span class="sr-only">Your Company</span>
-                <img
-                  class="h-8 w-auto"
-                  src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=600"
-                  alt=""
-                /> -->
               </router-link>
             </div>
 
@@ -226,7 +220,7 @@
                 <Popover
                   v-for="category in navigation.categories"
                   :key="category.name"
-                  v-slot="{ open }"
+                  v-slot="{ open, close }"
                   class="flex"
                 >
                   <div class="relative flex">
@@ -260,23 +254,21 @@
                               <div
                                 v-for="item in category.featured"
                                 :key="item.name"
-                                class="group relative text-base sm:text-sm"
+                                class="group relative text-base sm:text-sm cursor-pointer"
+                                @click="toProductList(close)"
                               >
                                 <img
                                   :src="item.imageSrc"
                                   :alt="item.imageAlt"
                                   class="aspect-square w-full rounded-lg bg-gray-100 object-cover group-hover:opacity-75"
                                 />
-                                <a
-                                  :href="item.href"
-                                  class="mt-6 block font-medium text-gray-900"
-                                >
+                                <div class="mt-6 block font-medium text-gray-900">
                                   <span
                                     class="absolute inset-0 z-10"
                                     aria-hidden="true"
                                   ></span>
                                   {{ item.name }}
-                                </a>
+                                </div>
                                 <p
                                   aria-hidden="true"
                                   class="mt-1"
@@ -306,10 +298,12 @@
                                     :key="item.name"
                                     class="flex"
                                   >
-                                    <a
-                                      :href="item.href"
-                                      class="hover:text-gray-800"
-                                    >{{ item.name }}</a>
+                                    <div
+                                      class="hover:text-gray-800 cursor-pointer"
+                                      @click="toProductList(close)"
+                                    >
+                                      {{ item.name }}
+                                    </div>
                                   </li>
                                 </ul>
                               </div>
@@ -321,12 +315,14 @@
                   </transition>
                 </Popover>
 
-                <a
+                <router-link
                   v-for="page in navigation.pages"
                   :key="page.name"
-                  :href="page.href"
+                  :to="page.href"
                   class="flex items-center text-sm font-medium text-gray-700 hover:text-gray-800"
-                >{{ page.name }}</a>
+                >
+                  {{ page.name }}
+                </router-link>
               </div>
             </PopoverGroup>
 
@@ -376,6 +372,20 @@
                 </button>
               </div>
 
+              <!-- User -->
+              <div class="flex lg:ml-6">
+                <router-link
+                  to="/user"
+                  class="p-2 text-gray-400 hover:text-gray-500"
+                >
+                  <span class="sr-only">User</span>
+                  <UserIcon
+                    class="size-6"
+                    aria-hidden="true"
+                  />
+                </router-link>
+              </div>
+
               <!-- Cart -->
               <LayoutCart />
             </div>
@@ -402,7 +412,7 @@ import {
   TransitionChild,
   TransitionRoot,
 } from '@headlessui/vue'
-import { Bars3Icon, MagnifyingGlassIcon, ShoppingBagIcon, XMarkIcon } from '@heroicons/vue/24/outline'
+import { Bars3Icon, MagnifyingGlassIcon, ShoppingBagIcon, UserIcon, XMarkIcon } from '@heroicons/vue/24/outline'
 
 const navigation = {
   categories: [
@@ -425,41 +435,31 @@ const navigation = {
       ],
       sections: [
         {
-          id: 'clothing',
-          name: 'Clothing',
+          id: 'category',
+          name: 'Category',
           items: [
-            { name: 'Tops', href: '#' },
-            { name: 'Dresses', href: '#' },
-            { name: 'Pants', href: '#' },
-            { name: 'Denim', href: '#' },
-            { name: 'Sweaters', href: '#' },
-            { name: 'T-Shirts', href: '#' },
-            { name: 'Jackets', href: '#' },
-            { name: 'Activewear', href: '#' },
-            { name: 'Browse All', href: '#' },
-          ],
-        },
-        {
-          id: 'accessories',
-          name: 'Accessories',
-          items: [
-            { name: 'Watches', href: '#' },
-            { name: 'Wallets', href: '#' },
-            { name: 'Bags', href: '#' },
-            { name: 'Sunglasses', href: '#' },
-            { name: 'Hats', href: '#' },
-            { name: 'Belts', href: '#' },
+            { name: 'Bags & Handbags', href: '#' },
+            { name: 'Clothing', href: '#' },
+            { name: 'Shoes', href: '#' },
+            { name: 'Accessories', href: '#' },
+            { name: 'Jewelry & Watches', href: '#' },
+            { name: 'Perfume & Cosmetics', href: '#' },
           ],
         },
         {
           id: 'brands',
           name: 'Brands',
           items: [
-            { name: 'Full Nelson', href: '#' },
-            { name: 'My Way', href: '#' },
-            { name: 'Re-Arranged', href: '#' },
-            { name: 'Counterfeit', href: '#' },
-            { name: 'Significant Other', href: '#' },
+            { name: 'Chanel', href: '#' },
+            { name: 'Dior', href: '#' },
+            { name: 'Hermès', href: '#' },
+            { name: 'Louis Vuitton', href: '#' },
+            { name: 'Prada', href: '#' },
+            { name: 'Fendi', href: '#' },
+            { name: 'Celine', href: '#' },
+            { name: 'Balenciaga', href: '#' },
+            { name: 'Valentino', href: '#' },
+            { name: 'Saint Laurent', href: '#' },
           ],
         },
       ],
@@ -485,38 +485,29 @@ const navigation = {
       ],
       sections: [
         {
-          id: 'clothing',
-          name: 'Clothing',
+          id: 'category',
+          name: 'Category',
           items: [
-            { name: 'Tops', href: '#' },
-            { name: 'Pants', href: '#' },
-            { name: 'Sweaters', href: '#' },
-            { name: 'T-Shirts', href: '#' },
-            { name: 'Jackets', href: '#' },
-            { name: 'Activewear', href: '#' },
-            { name: 'Browse All', href: '#' },
-          ],
-        },
-        {
-          id: 'accessories',
-          name: 'Accessories',
-          items: [
-            { name: 'Watches', href: '#' },
-            { name: 'Wallets', href: '#' },
-            { name: 'Bags', href: '#' },
-            { name: 'Sunglasses', href: '#' },
-            { name: 'Hats', href: '#' },
-            { name: 'Belts', href: '#' },
+            { name: 'Bags & Handbags', href: '#' },
+            { name: 'Clothing', href: '#' },
+            { name: 'Shoes', href: '#' },
+            { name: 'Accessories', href: '#' },
+            { name: 'Jewelry & Watches', href: '#' },
+            { name: 'Perfume & Cosmetics', href: '#' },
           ],
         },
         {
           id: 'brands',
           name: 'Brands',
           items: [
-            { name: 'Re-Arranged', href: '#' },
-            { name: 'Counterfeit', href: '#' },
-            { name: 'Full Nelson', href: '#' },
-            { name: 'My Way', href: '#' },
+            { name: 'Gucci', href: '#' },
+            { name: 'Louis Vuitton', href: '#' },
+            { name: 'Hermès', href: '#' },
+            { name: 'Prada', href: '#' },
+            { name: 'Burberry', href: '#' },
+            { name: 'Cartier', href: '#' },
+            { name: 'Dior', href: '#' },
+            { name: 'Saint Laurent', href: '#' },
           ],
         },
       ],
@@ -524,10 +515,22 @@ const navigation = {
   ],
   pages: [
     { name: 'Company', href: '#' },
-    { name: 'Stores', href: '#' },
   ],
 }
 
 const open = ref(false)
 const searchOpen = ref(false)
+const router = useRouter()
+
+const toProductList = (closePopover?: () => void) => {
+  // Close mobile menu if it's open
+  if (open.value) {
+    open.value = false
+  }
+  // Close desktop popover if provided
+  if (typeof closePopover === 'function') {
+    closePopover()
+  }
+  router.push('/product-list')
+}
 </script>

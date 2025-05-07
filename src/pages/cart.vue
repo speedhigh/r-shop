@@ -36,10 +36,12 @@
                   <div>
                     <div class="flex justify-between">
                       <h3 class="text-sm">
-                        <a
-                          :href="product.href"
+                        <router-link
+                          :to="`/product-detail?id=${product.id}`"
                           class="font-medium text-gray-700 hover:text-gray-800"
-                        >{{ product.name }}</a>
+                        >
+                          {{ product.name }}
+                        </router-link>
                       </h3>
                     </div>
                     <div class="mt-1 flex text-sm">
@@ -79,7 +81,7 @@
                     <div class="absolute right-0 top-0">
                       <button
                         type="button"
-                        class="-m-2 inline-flex p-2 text-gray-400 hover:text-gray-500"
+                        class="-m-2 cursor-pointer inline-flex p-2 text-gray-400 hover:text-gray-500"
                       >
                         <span class="sr-only">Remove</span>
                         <XMarkIcon
@@ -94,12 +96,12 @@
                 <p class="mt-4 flex space-x-2 text-sm text-gray-700">
                   <CheckIcon
                     v-if="product.inStock"
-                    class="size-5 shrink-0 text-green-500"
+                    class="size-5 shrink-0 text-green-500 cursor-pointer"
                     aria-hidden="true"
                   />
                   <ClockIcon
                     v-else
-                    class="size-5 shrink-0 text-gray-300"
+                    class="size-5 shrink-0 text-gray-300 cursor-pointer"
                     aria-hidden="true"
                   />
                   <span>{{ product.inStock ? 'In stock' : `Ships in ${product.leadTime}` }}</span>
@@ -165,7 +167,7 @@
           </dl>
 
           <div class="mt-6">
-            <router-link to="/order-list">
+            <router-link to="/checkout">
               <button
                 type="submit"
                 class="cursor-pointer w-full rounded-md border border-transparent bg-indigo-600 px-4 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-50"

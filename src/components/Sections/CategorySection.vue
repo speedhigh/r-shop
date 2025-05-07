@@ -11,13 +11,13 @@
         >
           Shop by Category
         </h2>
-        <a
-          href="#"
+        <router-link
+          to="/product-list"
           class="hidden text-sm font-semibold text-indigo-600 hover:text-indigo-500 sm:block"
         >
           Browse all categories
           <span aria-hidden="true"> &rarr;</span>
-        </a>
+        </router-link>
       </div>
 
       <div class="mt-6 grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:grid-rows-2 sm:gap-x-6 lg:gap-8">
@@ -34,10 +34,13 @@
           <div class="absolute inset-0 flex items-end p-6">
             <div>
               <h3 class="font-semibold text-white">
-                <a href="#">
+                <router-link
+                  to="/product-list"
+                  class="cursor-pointer"
+                >
                   <span class="absolute inset-0"></span>
                   New Arrivals
-                </a>
+                </router-link>
               </h3>
               <p
                 aria-hidden="true"
@@ -61,10 +64,13 @@
           <div class="absolute inset-0 flex items-end p-6">
             <div>
               <h3 class="font-semibold text-white">
-                <a href="#">
+                <router-link
+                  to="/product-list"
+                  class="cursor-pointer"
+                >
                   <span class="absolute inset-0"></span>
                   Best Sellers
-                </a>
+                </router-link>
               </h3>
               <p
                 aria-hidden="true"
@@ -88,10 +94,13 @@
           <div class="absolute inset-0 flex items-end p-6">
             <div>
               <h3 class="font-semibold text-white">
-                <a href="#">
+                <router-link
+                  to="/product-list"
+                  class="cursor-pointer"
+                >
                   <span class="absolute inset-0"></span>
                   Popular Picks
-                </a>
+                </router-link>
               </h3>
               <p
                 aria-hidden="true"

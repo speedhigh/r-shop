@@ -29,10 +29,13 @@
             class="h-96 w-full rounded-lg object-cover group-hover:opacity-75 sm:aspect-[2/3] sm:h-auto"
           />
           <h3 class="mt-4 text-base font-semibold text-gray-900">
-            <a :href="favorite.href">
+            <router-link
+              to="/product-detail"
+              class="cursor-pointer"
+            >
               <span class="absolute inset-0"></span>
               {{ favorite.name }}
-            </a>
+            </router-link>
           </h3>
           <p class="mt-1 text-sm text-gray-500">{{ favorite.price }}</p>
         </div>
