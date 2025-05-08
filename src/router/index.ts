@@ -4,7 +4,7 @@ import { routes } from 'vue-router/auto-routes'
 
 const router = createRouter({
   routes: setupLayouts(routes),
-  history: createWebHistory(),
+  history: createWebHistory('/r-shop/'),
 })
 
 export const getRoutes = createGetRoutes(router)

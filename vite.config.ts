@@ -13,7 +13,7 @@ import MetaLayouts from 'vite-plugin-vue-meta-layouts'
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: '/r-shop/',
+  base: './r-shop/',
   plugins: [
     vue(),
     vueDevTools(),
@@ -44,5 +44,23 @@ export default defineConfig({
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url)),
     },
+  },
+  build: {
+    outDir: 'dist',
+    assetsDir: 'assets',
+    emptyOutDir: true,
+    rollupOptions: {
+      output: {
+        manualChunks: undefined,
+        chunkFileNames: 'assets/[name]-[hash].js',
+        entryFileNames: 'assets/[name]-[hash].js',
+        assetFileNames: 'assets/[name]-[hash].[ext]',
+      },
+    },
+  },
+  server: {
+    host: true,
+    port: 3000,
+    strictPort: true,
   },
 })
