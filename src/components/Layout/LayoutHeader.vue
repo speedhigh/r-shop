@@ -81,7 +81,8 @@
                     <div class="grid grid-cols-2 gap-x-4">
                       <div
                         v-for="item in category.featured"
-                        :key="item.name" d
+                        :key="item.name"
+                        d
                         class="group relative text-sm"
                         @click="() => toProductList()"
                       >
@@ -138,18 +139,18 @@
                 </TabPanels>
               </TabGroup>
 
-              <div class="space-y-6 border-t border-gray-200 px-4 py-6">
+              <!-- <div class="space-y-6 border-t border-gray-200 px-4 py-6">
                 <div
-                  v-for="page in navigation.pages"
-                  :key="page.name"
+                  v-for="(p, index) in navigation.pages"
+                  :key="index"
                   class="flow-root"
                 >
                   <a
-                    :href="page.href"
+                    :href="p.href"
                     class="-m-2 block p-2 font-medium text-gray-900"
-                  >{{ page.name }}</a>
+                  >{{ p.name }}</a>
                 </div>
-              </div>
+              </div> -->
 
               <div class="space-y-6 border-t border-gray-200 px-4 py-6">
                 <div class="flow-root">
@@ -315,14 +316,14 @@
                   </transition>
                 </Popover>
 
-                <router-link
+                <!-- <router-link
                   v-for="page in navigation.pages"
                   :key="page.name"
                   :to="page.href"
                   class="flex items-center text-sm font-medium text-gray-700 hover:text-gray-800"
                 >
                   {{ page.name }}
-                </router-link>
+                </router-link> -->
               </div>
             </PopoverGroup>
 
@@ -421,16 +422,16 @@ const navigation = {
       name: 'Women',
       featured: [
         {
-          name: 'New Arrivals',
+          name: 'Luxury Bags',
           href: '#',
-          imageSrc: 'https://tailwindcss.com/plus-assets/img/ecommerce-images/mega-menu-category-01.jpg',
-          imageAlt: 'Models sitting back to back, wearing Basic Tee in black and bone.',
+          imageSrc: 'https://images.unsplash.com/photo-1584917865442-de89df76afd3?q=80&w=1000',
+          imageAlt: 'Elegant luxury handbags collection featuring iconic designs from top brands.',
         },
         {
-          name: 'Basic Tees',
+          name: 'Designer Accessories',
           href: '#',
-          imageSrc: 'https://tailwindcss.com/plus-assets/img/ecommerce-images/mega-menu-category-02.jpg',
-          imageAlt: 'Close up of Basic Tee fall bundle with off-white, ochre, olive, and black tees.',
+          imageSrc: 'https://images.unsplash.com/photo-1611652022419-a9419f74343d?q=80&w=1000',
+          imageAlt: 'Sophisticated collection of luxury accessories and leather goods.',
         },
       ],
       sections: [
@@ -469,18 +470,16 @@ const navigation = {
       name: 'Men',
       featured: [
         {
-          name: 'New Arrivals',
+          name: 'Luxury Suits',
           href: '#',
-          imageSrc:
-            'https://tailwindcss.com/plus-assets/img/ecommerce-images/product-page-04-detail-product-shot-01.jpg',
-          imageAlt: 'Drawstring top with elastic loop closure and textured interior padding.',
+          imageSrc: 'https://images.unsplash.com/photo-1593032465175-481ac7f401a0?q=80&w=1000',
+          imageAlt: 'Premium tailored suits and formal wear from luxury fashion houses.',
         },
         {
-          name: 'Artwork Tees',
+          name: 'Designer Watches',
           href: '#',
-          imageSrc: 'https://tailwindcss.com/plus-assets/img/ecommerce-images/category-page-02-image-card-06.jpg',
-          imageAlt:
-            'Three shirts in gray, white, and blue arranged on table with same line drawing of hands and shapes overlapping on front of shirt.',
+          imageSrc: 'https://images.unsplash.com/photo-1523170335258-f5ed11844a49?q=80&w=1000',
+          imageAlt: 'Exclusive collection of luxury timepieces from renowned watchmakers.',
         },
       ],
       sections: [
@@ -513,9 +512,9 @@ const navigation = {
       ],
     },
   ],
-  pages: [
-    { name: 'Company', href: '#' },
-  ],
+  // pages: [
+  //   { name: 'Company', href: '#' },
+  // ],
 }
 
 const open = ref(false)

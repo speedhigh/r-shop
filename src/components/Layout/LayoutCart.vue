@@ -46,12 +46,17 @@
             </li>
           </ul>
 
-          <button
-            type="submit"
-            class="cursor-pointer w-full rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:ring-0 focus:outline-none"
+          <router-link
+            to="/checkout"
+            @click="close"
           >
-            Checkout
-          </button>
+            <button
+              type="submit"
+              class="cursor-pointer w-full rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:ring-0 focus:outline-none"
+            >
+              Checkout
+            </button>
+          </router-link>
 
           <p class="mt-6 text-center">
             <router-link
